@@ -1,14 +1,11 @@
-// The spotify Client ID and Secret ID weren't working for some reason.
-// I had to delete the spotify constructor in order to get the movie this to work.
-
 
 require("dotenv").config();
-
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var axios = require("axios");
 var moment = require('moment')
 var fs = require("fs");
+var spotify = new Spotify(keys.spotify);
 
 
 
@@ -40,7 +37,6 @@ if (args[0] === "concert-this") {
         getConcert("Bad World Tour");
     }
     else {
-        ;
         getConcert(args.slice(1).join(" "));
     }
 };
@@ -91,12 +87,12 @@ function spotifySong(songName) {
             return console.log('Error occurred: ' + err);
         }
         
-        data.tracks.items.forEach(function (element) {
+        data.tracks.items.forEach(function (data) {
             console.log("");
-            console.log(`Artist: ${element.artists[0].name}`); 
+            console.log(`Artist: ${data.artists[0].name}`); 
             console.log(`Song: ${songName}`);
-            console.log(`Spotify Preview Link: ${elelement.preview_url}`);
-            console.log(`Album: ${elelement.album.name}`);
+            console.log(`Spotify Preview Link: ${data.preview_url}`);
+            console.log(`Album: ${data.album.name}`);
         });
     })
 };
@@ -118,20 +114,21 @@ function getMovie(movieName) {
         console.log(err);
     });
 };
-
-
-function getConcert(concertName) {
-    axios.get(`https://rest.bandsintown.com/artists/"${concertName}"/events?app_id=codingbootcamp`)
-    .then(function (concert) {
-            
-                console.log(`Concert Time: " ${moment(concert.data.datatime, 'YYYY-MM-DDTHH:mm:ss').format('MM/DD/YYYY, h:mm A')}`);
-                console.log(`Concert Location: ${concert.data.venue.city + "," + concert.data.venue.region + "," + concert.data.venue.country}`);
-                console.log(`Concert Venue: ${concert.data.venue.name}`);
-              }) 
-              .catch(function (err) {
-                console.log(err);
-            });
-        };
+var value = process.argv[1];
+var bandName = value; 
+     
+ function getConcert() {
+    axios.get("https://rest.bandsintown.com/artists/" + bandName + "/events?app_id=codingbootcamp").then(
+        function(bandResponse){
+            console.log("Venue: " + bandResponse.data[0].venue.name);
+            console.log("City: " + bandResponse.data[0].venue.city);
+            console.log(moment(bandResponse.data[0].datetime).format("MM/DD/YYYY"));
+    
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+     };  
 
 
       
