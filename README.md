@@ -22,3 +22,17 @@ Appropriate comments and error-checking has been added. The concert function sti
 
 located in the screenshots directory
 
+#Deployed Version
+
+Installation (Deployed Version)
+To run the application locally, first clone this repository with the following command.
+
+git clone git@github.com:chehlsee/liri-homework.git
+Next, install the application dependencies.
+
+cd liri-homework
+npm install
+Finally, run the node server locally.
+
+node liri.js `spotify-this-song "float on"`, `concert-this "john legend"`, `movie-this "Eternal Sunshine"`, `do-what-it-says`
+

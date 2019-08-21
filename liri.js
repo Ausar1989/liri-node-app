@@ -68,15 +68,7 @@ if (args[0] === "do-what-it-says") {
             }
         };
         
-        if (dataArr[0] === "concert-this") {
-            if (dataArr[1] === undefined) {
-                getConcert("Bad World Tour");
-            }
-            else {
-                ;
-                getConcert(dataArr[1].slice().join("+"));
-            }
-        };
+        
         
     });
 };
@@ -114,15 +106,14 @@ function getMovie(movieName) {
         console.log(err);
     });
 };
-var value = process.argv[1];
-var bandName = value; 
+ 
      
- function getConcert() {
-    axios.get("https://rest.bandsintown.com/artists/" + bandName + "/events?app_id=codingbootcamp").then(
-        function(bandResponse){
-            console.log("Venue: " + bandResponse.data[0].venue.name);
-            console.log("City: " + bandResponse.data[0].venue.city);
-            console.log(moment(bandResponse.data[0].datetime).format("MM/DD/YYYY"));
+ function getConcert(concertName) {
+    axios.get(`https://rest.bandsintown.com/artists/${concertName}/events?app_id=codingbootcamp`).then(
+        function(concert){
+            console.log(`Venue: ${concert.data[0].venue.name}`);
+            console.log(`City:  ${concert.data[0].formatted_location}`);
+            console.log(moment(concert.data[0].datetime).format("MM/DD/YYYY"));
     
         })
         .catch(function (err) {
