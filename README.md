@@ -16,7 +16,7 @@ What our app does depends on what the user types, and there are 4 main functions
 The program also makes a request to the Spotify API, and we get back a JSON object that includes everything we need (artist(s), song, preview link, and album)
 The program also makes a HTTP request to the OMDb API using the request NPM module, and we get back a JSON object that includes everything we need (title, year, IMDb rating, language, etc.)
 The program also reads from a file called "random.text" and executes the command and query found there using string and array methods
-Appropriate comments and error-checking has been added. The concert function still needs work and the Spotify function is reading the client ID and the secret ID for some reason.
+Appropriate comments and error-checking has been added. The concert function still needs work and the Spotify function is reading the client ID and the secret ID because the hastags were taken off the lines the IDs were on. they're no longer commented.
 
 #SCREENSHOTS OF THE CODE
 
@@ -27,7 +27,7 @@ located in the screenshots directory
 Installation (Deployed Version)
 To run the application locally, first clone this repository with the following command.
 
-git clone git@github.com:chehlsee/liri-homework.git
+git clone git@github.com:Ausar1989/liri-node-app.git
 Next, install the application dependencies.
 
 cd liri-homework
