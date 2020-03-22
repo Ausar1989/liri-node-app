@@ -1,6 +1,6 @@
 # liri-node-app
 
-#Requirements
+# Requirements
 Make a Node.js app that depends on user input from the command line
 Integrate Axios, Spotify, and OMDb APIs via the appropriate NPM modules
 Use API calls and parse through returned JSON objects, outputting them in a specified format
@@ -18,11 +18,27 @@ The program also makes a HTTP request to the OMDb API using the request NPM modu
 The program also reads from a file called "random.text" and executes the command and query found there using string and array methods
 Appropriate comments and error-checking has been added. The concert function still needs work and the Spotify function is reading the client ID and the secret ID because the hastags were taken off the lines the IDs were on. they're no longer commented.
 
-#SCREENSHOTS OF THE CODE
+# Screenshots of The App
 
-located in the screenshots directory
+located in the screenshots directory.
 
-#Deployed Version
+# Screenshots
+Response from the spotify server.
+![music](screenshots/music.png)
+Response from OMDb server.
+![movie](screenshots/movie.png)
+Snapshots of some of the code.
+![song](screenshots/song.png)
+
+# Technologies Used
+- Axios
+- node.js
+- Javascript
+
+
+
+
+# Deployed Version
 
 Installation (Deployed Version)
 To run the application locally, first clone this repository with the following command.
